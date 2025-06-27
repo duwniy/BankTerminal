@@ -1,6 +1,6 @@
 import java.sql.SQLOutput;
 
-public class Client {
+public class Client extends User{
     private final String bankAccount;
     private double balance;
 

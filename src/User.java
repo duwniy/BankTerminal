@@ -7,6 +7,9 @@ public abstract class User {
         this.password = password;
     }
 
+    protected User() {
+    }
+
     public String getName() {
         return name;
     }
