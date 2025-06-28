@@ -1,22 +1,17 @@
 import java.sql.SQLOutput;
 
 public class Client extends User{
-    private final String bankAccount;
     private double balance;
 
     public Client() {
-       bankAccount = " ";
        balance = 0.0f;
     }
 
-    public Client(String bankAccount, double balance) {
-        this.bankAccount = bankAccount;
+    public Client(String name, String login, String password, double balance) {
+        super(name, login, password);
         this.balance = balance;
     }
 
-    public String getBankAccount() {
-        return bankAccount;
-    }
 
     public boolean clientDeposit(double depositAmount) {
         if(depositAmount<=0) {

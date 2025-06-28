@@ -41,5 +41,9 @@ public class Bank {
         return instance;
     }
 
+    public List<Client> getClientsList() {
+        return clientsList;
+    }
+
 
 }
