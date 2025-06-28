@@ -12,7 +12,7 @@ public class Menu {
           System.out.println("3.Withdraw.");
           System.out.println("4.Exit.");
           int choice = scanner.nextInt();
-
+          scanner.nextLine();
           switch (choice) {
               case 1:
                   System.out.println(client.getBalance());
@@ -40,19 +40,24 @@ public class Menu {
       double balance;
 
       System.out.println("Please write your full name: ");
-      name = scanner.next();
+      name = scanner.nextLine();
       if (!Validator.isNotEmpty(name)) {System.out.println("Name cannot be empty."); return;}
 
       System.out.println("Please write your login: ");
-      login = scanner.next();
+      login = scanner.nextLine();
       if(!Validator.isValidLogin(login)) {System.out.println("Not valid login!"); return;}
 
       System.out.println("Please write your password: ");
-      password = scanner.next();
+      password = scanner.nextLine();
       if(!Validator.isValidPassword(password)) {System.out.println("Incorrect password!"); return;}
 
       System.out.println("Write your balance: ");
+      while (!scanner.hasNextDouble()) {
+          System.out.println("Please enter a valid number for balance:");
+          scanner.next();
+      }
       balance = scanner.nextDouble();
+      scanner.nextLine();
       if(!Validator.isPositiveAmount(balance)) {System.out.println("Only positive numbers can be entered!"); return;}
 
       Client client = new Client(name, login, password, balance);
@@ -84,7 +89,7 @@ public class Menu {
             System.out.println("2. Clients List");
             System.out.println("3. Exit");
             int choice = scanner.nextInt();
-
+            scanner.nextLine();
             switch (choice) {
                 case 1:
                     registerNewClient();
