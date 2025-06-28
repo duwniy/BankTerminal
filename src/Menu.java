@@ -10,7 +10,8 @@ public class Menu {
           System.out.println("1.Check Balance.");
           System.out.println("2.Deposit.");
           System.out.println("3.Withdraw.");
-          System.out.println("4.Exit.");
+          System.out.println("4.Change Login");
+          System.out.println("5.Exit.");
           int choice = scanner.nextInt();
           scanner.nextLine();
           switch (choice) {
@@ -28,6 +29,10 @@ public class Menu {
                   client.clientWithdraw(withdrawAmount);
                   break;
               case 4:
+                  System.out.println("Login Change");
+                  clientChangeLogin(client);
+                  break;
+              case 5:
                   return;
               default:
                   System.out.println("Error occurred, please check your connection.");
@@ -83,7 +88,7 @@ public class Menu {
 
 
 
-    public void moderatorMenu(Employer employer) {
+    public void moderatorMenu(Employer ignoredEmployer) {
         while (true) {
             System.out.println("1. Client Registration");
             System.out.println("2. Clients List");
@@ -159,5 +164,33 @@ public class Menu {
       }
   }
 
+    public boolean clientChangeLogin(Client client) {
+        while (true) {
+            System.out.println("Please write your full name: ");
+            String name = scanner.nextLine();
+            if (!name.equals(client.getName())) {
+                System.out.println("Incorrect full name. Try again.");
+                continue;
+            }
 
+            System.out.println("Please write your password: ");
+            String password = scanner.nextLine();
+            if (!password.equals(client.getPassword())) {
+                System.out.println("Incorrect password. Try again.");
+                continue;
+            }
+
+            while (true) {
+                System.out.println("Please create a new login: ");
+                String login = scanner.nextLine();
+                if (!Validator.isValidLogin(login)) {
+                    System.out.println("Not valid login! Try again.");
+                    continue;
+                }
+                client.setLogin(login);
+                System.out.println("Login successfully changed!");
+                return true;
+            }
+        }
+    }
 }

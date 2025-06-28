@@ -35,6 +35,7 @@ public class Client extends User{
         return true;
     }
 
+
     public double getBalance() {
         return balance;
     }
